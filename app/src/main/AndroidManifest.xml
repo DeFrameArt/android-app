@@ -19,6 +19,9 @@
         android:name="com.deframe.artapp.ui.RegisterActivity">
         </activity>
         <activity
+            android:name="com.deframe.artapp.ui.Test">
+        </activity>
+        <activity
         android:name = "com.deframe.artapp.ui.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

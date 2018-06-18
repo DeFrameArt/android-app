@@ -15,15 +15,13 @@ import com.deframe.artapp.helper.createFragment
 import com.deframe.artapp.helper.findNavigationPositionById
 import com.deframe.artapp.helper.getTag
 import com.deframe.artapp.R
-import com.deframe.artapp.extension.*
-import com.deframe.artapp.helper.*
 
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
     private val KEY_POSITION = "keyPosition"
 
-    private var navPosition: BottomNavigationPosition = BottomNavigationPosition.HOME
+    private var navPosition: BottomNavigationPosition = BottomNavigationPosition.LIST
 
     private lateinit var toolbar: Toolbar
 
@@ -54,7 +52,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     private fun restoreSaveInstanceState(savedInstanceState: Bundle?) {
         // Restore the current navigation position.
         savedInstanceState?.also {
-            val id = it.getInt(KEY_POSITION, BottomNavigationPosition.HOME.id)
+            val id = it.getInt(KEY_POSITION, BottomNavigationPosition.LIST.id)
             navPosition = findNavigationPositionById(id)
         }
     }
@@ -66,7 +64,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     }
 
     private fun initFragment(savedInstanceState: Bundle?) {
-        savedInstanceState ?: switchFragment(BottomNavigationPosition.HOME)
+        savedInstanceState ?: switchFragment(BottomNavigationPosition.LIST)
     }
 
     /**

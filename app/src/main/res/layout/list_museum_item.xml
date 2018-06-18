@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="15dp"
+    android:layout_marginStart="15dp"
+    android:orientation="vertical"
+    app:cardElevation="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/list_item_museumImage"
+            android:layout_width="match_parent"
+            android:layout_height="148dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            app:srcCompat="@android:color/holo_red_dark" />
+
+        <TextView
+            android:id="@+id/list_item_museumName"
+            android:layout_width="348dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/list_item_museumImage"
+            android:layout_centerHorizontal="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="5dp"
+            android:text="Institue of Contemporary Art"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/list_item_museumAddress"
+            android:layout_width="348dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/list_item_museumName"
+            android:layout_centerHorizontal="true"
+
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:text=" 25 Harbor Shore Drive, Boston, MA 02210"
+            android:textSize="16dp" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

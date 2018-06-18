@@ -29,6 +29,8 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
+
+
         //on click listener for switching to sign up
         val textSignUp = findViewById<TextView>(R.id.txt_signupSwitch)
         textSignUp.setOnClickListener {
