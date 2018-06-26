@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:layout_centerInParent="true"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/museumbgimage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:contentDescription="@string/imageHolder"
+        app:srcCompat="@android:color/darker_gray" />
+
+    <ImageView
+        android:id="@+id/museumlogo"
+        android:layout_width="105dp"
+        android:layout_height="114dp"
+        android:layout_below="@+id/museumbgimage"
+        android:layout_marginBottom="32dp"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/imageHolder"
+        android:scaleType="center"
+        app:srcCompat="@android:color/darker_gray" />
+
+    <TextView
+        android:id="@+id/museum_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/address_city"
+        android:layout_marginTop="214dp"
+        android:text="Museum of Fine Arts"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/address_street"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/museum_name"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/museumlogo"
+        android:text="465 Huntington Ave"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/address_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/address_street"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/museumlogo"
+        android:text="Boston, MA 02115"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/address_country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/address_city"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/museumlogo"
+        android:text="United States"
+        android:textSize="16dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@+id/button_map"
+        android:background="@color/light_gray" />
+
+    <Button
+        android:id="@+id/button_map"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="194dp"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/museumlogo"
+
+
+        android:layout_weight="1"
+
+        android:background="@color/white"
+        android:drawableTop="@drawable/baseline_map_black_24dp"
+        android:paddingTop="20dp"
+        android:text="Map"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat" />
+
+    <Button
+        android:id="@+id/button_frida"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="190dp"
+        android:layout_height="100dp"
+        android:layout_alignParentEnd="true"
+
+
+        android:layout_below="@+id/museumlogo"
+
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:drawableTop="@drawable/baseline_list_black_24dp"
+        android:paddingTop="20dp"
+        android:text="Ask Frida"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/button_map"
+        android:background="#e4e4e4" />
+
+    <TextView
+        android:id="@+id/collections"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/button_map"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:text="Collections"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/collectionImg1"
+        android:layout_width="120dp"
+        android:layout_height="90dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/collections"
+        android:layout_marginStart="20dp"
+        app:srcCompat="@android:color/holo_orange_dark" />
+
+    <TextView
+        android:id="@+id/collection1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/collections"
+        android:layout_below="@+id/collectionImg1"
+        android:text="TextView"
+        tools:text="American" />
+
+
+    <ImageView
+        android:id="@+id/collectionImg2"
+        android:layout_width="120dp"
+        android:layout_height="90dp"
+        android:layout_below="@+id/collections"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="3dp"
+
+        android:layout_toRightOf="@+id/collectionImg1"
+        app:srcCompat="@android:color/holo_orange_dark" />
+
+    <TextView
+        android:id="@+id/collection2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/collectionImg1"
+        android:layout_centerHorizontal="true"
+        android:text="TextView"
+        tools:text="American" />
+
+    <ImageView
+        android:id="@+id/collectionImg3"
+        android:layout_width="120dp"
+        android:layout_height="90dp"
+        android:layout_below="@+id/collections"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="3dp"
+
+        android:layout_toRightOf="@+id/collectionImg2"
+        app:srcCompat="@android:color/holo_orange_dark" />
+
+    <TextView
+        android:id="@+id/collection3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/collectionImg3"
+
+        android:layout_toEndOf="@+id/address_city"
+        android:text="TextView"
+        tools:text="American" />
+
+</RelativeLayout>

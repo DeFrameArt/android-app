@@ -15,6 +15,7 @@ import com.deframe.artapp.helper.createFragment
 import com.deframe.artapp.helper.findNavigationPositionById
 import com.deframe.artapp.helper.getTag
 import com.deframe.artapp.R
+import com.google.android.gms.maps.SupportMapFragment
 
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
@@ -89,6 +90,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         }
     }
 
+
     private fun attachFragment(fragment: Fragment, tag: String) {
         if (fragment.isDetached) {
             supportFragmentManager.beginTransaction().attach(fragment).commit()
@@ -100,5 +102,6 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit()
     }
+
 
 }

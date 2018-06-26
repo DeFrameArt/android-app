@@ -2,9 +2,8 @@ package com.deframe.artapp.helper
 
 import android.support.v4.app.Fragment
 import com.deframe.artapp.R
-import com.deframe.artapp.ui.DashboardFragment
+import com.deframe.artapp.ui.MapViewFragment
 import com.deframe.artapp.ui.HomeFragment
-import com.deframe.artapp.ui.ListViewFragment
 import com.deframe.artapp.ui.ProfileFragment
 
 enum class BottomNavigationPosition(val position: Int, val id: Int) {
@@ -24,14 +23,14 @@ fun findNavigationPositionById(id: Int): BottomNavigationPosition = when (id) {
 
 fun BottomNavigationPosition.createFragment(): Fragment = when (this) {
     BottomNavigationPosition.LIST -> HomeFragment.newInstance()
-    BottomNavigationPosition.MAP -> DashboardFragment.newInstance()
+    BottomNavigationPosition.MAP -> MapViewFragment.newInstance()
     //BottomNavigationPosition.NOTIFICATIONS -> ListViewFragment.newInstance()
     BottomNavigationPosition.PROFILE -> ProfileFragment.newInstance()
 }
 
 fun BottomNavigationPosition.getTag(): String = when (this) {
     BottomNavigationPosition.LIST -> HomeFragment.TAG
-    BottomNavigationPosition.MAP -> DashboardFragment.TAG
+    BottomNavigationPosition.MAP -> MapViewFragment.TAG
    // BottomNavigationPosition.NOTIFICATIONS -> ListViewFragment.TAG
     BottomNavigationPosition.PROFILE -> ProfileFragment.TAG
 }
