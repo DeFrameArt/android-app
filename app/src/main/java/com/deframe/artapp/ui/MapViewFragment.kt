@@ -1,9 +1,6 @@
 package com.deframe.artapp.ui
 
-import android.app.FragmentManager
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -18,7 +15,6 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener
 import kotlinx.android.synthetic.main.fragment_map.*
 import android.view.InflateException
 import com.deframe.artapp.R.id.*

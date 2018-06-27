@@ -83,8 +83,15 @@ class MuseumDetailActivity : AppCompatActivity() {
         collection1.text = getfeaturedImgTxt(featuredImgArr, 0)
         collection2.text = getfeaturedImgTxt(featuredImgArr, 1)
         collection3.text = getfeaturedImgTxt(featuredImgArr, 2)
-    }
 
+        //set onClickListeners to collections
+
+        collectionImg1.setOnClickListener {
+            val collectionIntent = Intent(this,CollectionActivity::class.java)
+
+            startActivity(collectionIntent)
+        }
+    }
 
     fun getImgUrl(list:JSONArray?, index : Int) : String {
         return list!!.getJSONObject(index).get("url").toString()
@@ -93,7 +100,5 @@ class MuseumDetailActivity : AppCompatActivity() {
     fun getfeaturedImgTxt(list:JSONArray?, index : Int) : String {
         return list!!.getJSONObject(index).get("name").toString()
     }
-
-
 
 }
