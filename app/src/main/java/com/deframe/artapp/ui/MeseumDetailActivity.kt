@@ -18,6 +18,9 @@ import java.net.URL
 
 class MuseumDetailActivity : AppCompatActivity() {
 
+
+    val museumID : Int = 0
+
     /**
      *
      * @param savedInstanceState
@@ -51,12 +54,13 @@ class MuseumDetailActivity : AppCompatActivity() {
         var featuredImgArr : JSONArray?= null
 
 
-
+        var museumId = museum.get("id").toString()
         var t = Thread(Runnable {
-           var museumId = museum.get("id").toString()
+
             var url = "http://deframe-test-api.us-east-1.elasticbeanstalk.com:80/museums/" + museumId + "/featuredimages"
             val result = URL(url).readText()
             featuredImgArr = JSONArray(result)
+
 
         })
 
@@ -80,17 +84,34 @@ class MuseumDetailActivity : AppCompatActivity() {
                 .fit()
                 .centerCrop()
                 .into(collectionImg3)
-        collection1.text = getfeaturedImgTxt(featuredImgArr, 0)
-        collection2.text = getfeaturedImgTxt(featuredImgArr, 1)
-        collection3.text = getfeaturedImgTxt(featuredImgArr, 2)
+
+        var collectionName1 = getfeaturedImgTxt(featuredImgArr, 0)
+        var collectionName2 = getfeaturedImgTxt(featuredImgArr, 1)
+        var collectionName3 = getfeaturedImgTxt(featuredImgArr, 2)
+        collection1.text =collectionName1
+        collection2.text = collectionName2
+        collection3.text =collectionName3
 
         //set onClickListeners to collections
 
         collectionImg1.setOnClickListener {
-            val collectionIntent = Intent(this,CollectionActivity::class.java)
-
-            startActivity(collectionIntent)
+            launchCollectionPage(collectionName1, museumId)
         }
+
+        collectionImg2.setOnClickListener {
+            launchCollectionPage(collectionName2, museumId)
+        }
+
+        collectionImg3.setOnClickListener {
+            launchCollectionPage(collectionName3, museumId)
+        }
+    }
+
+    fun launchCollectionPage(collctionName : String, museumId:String) :Unit {
+        val collectionIntent = Intent(this,CollectionActivity::class.java)
+        collectionIntent.putExtra("collection", collctionName)
+        collectionIntent.putExtra("id", museumId)
+        startActivity(collectionIntent)
     }
 
     fun getImgUrl(list:JSONArray?, index : Int) : String {

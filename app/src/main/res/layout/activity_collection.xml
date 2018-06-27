@@ -9,6 +9,13 @@
     android:background="@color/white"
     android:orientation="vertical">
 
+<android.support.v4.widget.NestedScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
     <ImageView
         android:id="@+id/painting"
         android:layout_width="match_parent"
@@ -17,7 +24,7 @@
         app:srcCompat="@android:color/darker_gray" />
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/painting_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/painting"
@@ -31,16 +38,16 @@
         android:id="@+id/txtViewAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/title"
-        android:layout_below="@+id/title"
+        android:layout_alignStart="@+id/painting_title"
+        android:layout_below="@+id/painting_title"
         android:layout_marginTop="10dp"
         android:text="Author: "
         android:textSize="18dp" />
 
     <TextView
-        android:id="@+id/author"
+        android:id="@+id/artist"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
         android:layout_alignBottom="@+id/txtViewAuthor"
         android:layout_toEndOf="@+id/txtViewAuthor"
         android:text="John Singleton Copley"
@@ -51,9 +58,10 @@
         android:id="@+id/txtViewDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/title"
+        android:layout_alignStart="@+id/painting_title"
         android:layout_below="@+id/txtViewAuthor"
         android:layout_marginTop="5dp"
+
         android:text="Date: "
         android:textSize="18dp" />
 
@@ -69,10 +77,11 @@
 
     <TextView
         android:id="@+id/description"
-        android:layout_width="335dp"
-        android:layout_height="100dp"
-        android:layout_alignStart="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/painting_title"
         android:layout_below="@+id/txtViewDate"
+        android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
         android:text="Description here"
         android:textSize="16dp" />
@@ -89,68 +98,40 @@
         android:text="Collections"
         android:textSize="18sp" />
 
-
-
     <ImageView
-        android:id="@+id/collectionImg1"
+        android:id="@+id/painting1"
         android:layout_width="120dp"
         android:layout_height="90dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/collections"
         android:layout_marginStart="20dp"
+        android:layout_marginBottom="10dp"
         app:srcCompat="@android:color/holo_orange_dark" />
-
-    <TextView
-        android:id="@+id/collection1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/painting"
-        android:layout_below="@+id/collectionImg1"
-        android:text="TextView"
-        tools:text="American" />
 
 
     <ImageView
-        android:id="@+id/collectionImg2"
+        android:id="@+id/painting2"
         android:layout_width="120dp"
         android:layout_height="90dp"
         android:layout_below="@+id/collections"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="3dp"
+        android:layout_marginBottom="10dp"
 
-        android:layout_toRightOf="@+id/collectionImg1"
+        android:layout_toRightOf="@+id/painting1"
         app:srcCompat="@android:color/holo_orange_dark" />
 
-    <TextView
-        android:id="@+id/collection2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/collectionImg1"
-        android:layout_centerHorizontal="true"
-        android:text="TextView"
-        tools:text="American" />
-
     <ImageView
-        android:id="@+id/collectionImg3"
+        android:id="@+id/painting3"
         android:layout_width="120dp"
         android:layout_height="90dp"
         android:layout_below="@+id/collections"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="3dp"
-
-        android:layout_toRightOf="@+id/collectionImg2"
+        android:layout_marginBottom="10dp"
+        android:layout_toRightOf="@+id/painting2"
         app:srcCompat="@android:color/holo_orange_dark" />
-
-    <TextView
-        android:id="@+id/collection3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/collectionImg3"
-
-        android:layout_toEndOf="@+id/address_city"
-        android:text="TextView"
-        tools:text="American" />
-
-
+</RelativeLayout>
+</android.support.v4.widget.NestedScrollView>
 
 </RelativeLayout>

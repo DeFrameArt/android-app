@@ -27,6 +27,10 @@
         android:visibility="visible"
         app:cardCornerRadius="5dp"
         app:cardElevation="3dp">
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
 
         <ImageView
             android:id="@+id/preview_img"
@@ -34,33 +38,38 @@
             android:layout_height="match_parent"
             android:visibility="visible" />
 
-        <TextView
-            android:ellipsize="end"
-            android:id="@+id/preview_museum"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="5dp"
-            android:text="Gallery 360"
-            android:textSize="18dp" />
+    <TextView
+
+        android:id="@+id/preview_museum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/preview_img"
+        android:text="Gallery 360"
+        android:textSize="18dp"
+        android:textStyle="bold" />
 
         <TextView
             android:id="@+id/preview_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="35dp"
+            android:layout_alignStart="@+id/preview_museum"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/preview_museum"
             android:text="360 Huntington Ave"
             android:textSize="16dp" />
-        <TextView
-            android:id="@+id/preview_city"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="65dp"
-            android:textSize="16dp"
-            android:text="Boston, MA" />
 
+    <TextView
+        android:id="@+id/preview_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/preview_museum"
+        android:layout_below="@+id/preview_address"
+        android:text="Boston, MA"
+        android:layout_marginTop="5dp"
+        android:textSize="16dp" />
+</RelativeLayout>
     </android.support.v7.widget.CardView>
 
 

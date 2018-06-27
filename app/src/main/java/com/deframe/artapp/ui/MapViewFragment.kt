@@ -24,6 +24,10 @@ import com.squareup.picasso.Picasso
 import org.json.JSONArray
 import org.json.JSONObject
 import java.net.URL
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+
+
 
 
 class MapViewFragment : Fragment(), OnMapReadyCallback {
@@ -90,10 +94,14 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
             var lng = arr.getJSONObject(i).get("lng").toString().toDouble()
             var lat =  arr.getJSONObject(i).get("lat").toString().toDouble()
             var location = LatLng(lat, lng)
+
+            val imageBitmap = BitmapFactory.decodeResource(context?.getResources(),
+                    R.drawable.ic_pin_map);
+            var v = Bitmap.createScaledBitmap(imageBitmap, 63, 80, false)
             var marker = mMap?.addMarker((MarkerOptions()
                     .position(location)
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_pin_map))))
-
+                    .icon(BitmapDescriptorFactory.fromBitmap(v))))
+           // BitmapDescriptorFactory.fromBitmap(resizeBitmap("your drawable name",72,64)
 
             marker?.tag = i
         }
@@ -104,6 +112,8 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
         val list = JSONArray(result)
         museumList = list
     }
+
+
 
     override fun onMapReady(map: GoogleMap?) {
 
@@ -132,7 +142,7 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
                 infoCard.visibility = View.VISIBLE
                 preview_museum.text = museumList!!.getJSONObject( marker.tag as Int).get("name").toString()
                 preview_address.text = museumList!!.getJSONObject( marker.tag as Int).get("street").toString()
-                preview_city.text = museumList!!.getJSONObject( marker.tag as Int).get("city").toString() +
+                preview_city.text = museumList!!.getJSONObject( marker.tag as Int).get("city").toString() + " "+
                         museumList!!.getJSONObject( marker.tag as Int).get("state").toString() + ", "+
                         museumList!!.getJSONObject( marker.tag as Int).get("zip").toString()
                 selectedMuseum =  museumList!!.getJSONObject( marker.tag as Int)
