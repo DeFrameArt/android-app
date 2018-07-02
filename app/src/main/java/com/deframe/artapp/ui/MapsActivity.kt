@@ -17,13 +17,18 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
-        GoogleMap.OnMarkerClickListener {
+/**
+ * This class handles the map setup
+ * */
+class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1
     }
 
+    /**
+     * Checks for map permission
+     */
     private fun setUpMap() {
         if (ActivityCompat.checkSelfPermission(this,
                         android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -32,21 +37,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
 
             return
         }
-
-
     }
 
-    override fun onMarkerClick(p0: Marker?) = false
-    /*override fun onMarkerClick(p0: Marker?): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }*/
-
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
-
-    private lateinit var mMap: GoogleMap
-
-    private lateinit var lastLocation: Location
-
+    /**
+     * Handles onCreate actions of the activity
+     *
+     * @param savedInstanceState
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
@@ -54,8 +51,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
-
-       // fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
     }
 
     /**
@@ -68,7 +63,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
      * installed Google Play services and returned to the app.
      */
     override fun onMapReady(googleMap: GoogleMap) {
-
         setUpMap()
     }
 }

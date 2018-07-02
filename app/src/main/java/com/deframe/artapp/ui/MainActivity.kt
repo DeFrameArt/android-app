@@ -17,7 +17,13 @@ import com.deframe.artapp.helper.getTag
 import com.deframe.artapp.R
 import com.google.android.gms.maps.SupportMapFragment
 
-
+/**
+ * This class handles the main fragment
+ *
+ * @property navPosition
+ * @property toolBar
+ * @property bottomNavigation
+ */
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
     private val KEY_POSITION = "keyPosition"
@@ -28,6 +34,11 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
     private lateinit var bottomNavigation: BottomNavigationView
 
+    /**
+     * Handles onCreate actions of the activity
+     *
+     * @param savedInstanceState
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         restoreSaveInstanceState(savedInstanceState)
@@ -39,31 +50,51 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         initFragment(savedInstanceState)
     }
 
+    /**
+     * Handles onSavedInstantceState actions of the activity
+     *
+     * @param outState
+     */
     override fun onSaveInstanceState(outState: Bundle?) {
         // Store the current navigation position.
         outState?.putInt(KEY_POSITION, navPosition.id)
         super.onSaveInstanceState(outState)
     }
 
+    /**
+     * Handles onSavedInstantceState actions of the activity
+     *
+     * @param outState
+     */
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         navPosition = findNavigationPositionById(item.itemId)
         return switchFragment(navPosition)
     }
 
+    /**
+     * Restore the current navigation position.
+     * @param savedInstanceState
+     */
     private fun restoreSaveInstanceState(savedInstanceState: Bundle?) {
-        // Restore the current navigation position.
         savedInstanceState?.also {
             val id = it.getInt(KEY_POSITION, BottomNavigationPosition.LIST.id)
             navPosition = findNavigationPositionById(id)
         }
     }
 
+    /**
+     * Initiates bottome navigation bar
+     */
     private fun initBottomNavigation() {
         bottomNavigation.disableShiftMode() // Extension function
         bottomNavigation.active(navPosition.position)   // Extension function
         bottomNavigation.setOnNavigationItemSelectedListener(this)
     }
 
+    /**
+     * Initializes fragment
+     * @param savedInstanceState
+     */
     private fun initFragment(savedInstanceState: Bundle?) {
         savedInstanceState ?: switchFragment(BottomNavigationPosition.LIST)
     }
@@ -80,17 +111,27 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         return true
     }
 
+    /**
+     * @return found fragment according to tag
+     */
     private fun FragmentManager.findFragment(position: BottomNavigationPosition): Fragment {
         return findFragmentByTag(position.getTag()) ?: position.createFragment()
     }
 
+    /**
+     * Detaches fragment
+     */
     private fun detachFragment() {
         supportFragmentManager.findFragmentById(R.id.container)?.also {
             supportFragmentManager.beginTransaction().detach(it).commit()
         }
     }
 
-
+    /**
+     * Attaches fragment
+     * @param fragment
+     * @param tag
+     */
     private fun attachFragment(fragment: Fragment, tag: String) {
         if (fragment.isDetached) {
             supportFragmentManager.beginTransaction().attach(fragment).commit()

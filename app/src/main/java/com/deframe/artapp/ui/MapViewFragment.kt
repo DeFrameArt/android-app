@@ -26,34 +26,42 @@ import org.json.JSONObject
 import java.net.URL
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import com.deframe.artapp.helper.Constants
+import com.deframe.artapp.helper.Constants.Companion.API_TEST
 
-
-
-
+/**
+ * This class handles the map fragment screen
+ *
+ * @property mMap stores the google map reference
+ * @property rootView stores the view
+ * @property museumList stores the original array of museums
+ * @property selectedMuseum stores the last selected museum marker
+ */
 class MapViewFragment : Fragment(), OnMapReadyCallback {
 
     private var mMap: GoogleMap? = null
-    private var currentMarker: Marker? = null
     private var rootView: View? = null
-
-    private var  museumList : JSONArray? = null
-    private var selectedMuseum : JSONObject?= null
-
-
-
-
+    private var museumList: JSONArray? = null
+    private var selectedMuseum: JSONObject? = null
 
     companion object {
         val TAG: String = MapViewFragment::class.java.simpleName
         fun newInstance() = MapViewFragment()
     }
 
+    /**
+     * Handles onCreate actions of the activity
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return root view of this fragment
+     */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-       // val view = inflater.inflate(R.layout.fragment_map, container, false)
-       if (rootView != null) {
-           var parent : ViewGroup? = null
-             parent = rootView?.getParent() as? ViewGroup
+        if (rootView != null) {
+            var parent: ViewGroup? = null
+            parent = rootView?.getParent() as? ViewGroup
             parent?.removeView(rootView)
         }
         try {
@@ -62,21 +70,23 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
             /* map is already there, just return view as it is  */
         }
 
+        //runs a thread to call the database
         Thread(Runnable {
             getAllMuseums()
-
         }).start()
-
-
         return rootView
-
-
     }
 
+    /**
+     * Sync to google map
+     *
+     * @param view
+     * @param savedInstanceState
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       var supportMapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
+        var supportMapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         if (supportMapFragment == null) {
             supportMapFragment = SupportMapFragment.newInstance()
             childFragmentManager.beginTransaction().replace(R.id.map, supportMapFragment).commit()
@@ -84,43 +94,51 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
         supportMapFragment?.getMapAsync(this)
     }
 
-    fun addMarkers(arr : JSONArray) : Unit {
-
-       /* var marker = BitmapFactory.decodeResource(context?.getResources(),
-                R.drawable.ic_pin_map);
-        var scaledMarker = Bitmap.createScaledBitmap(marker,30,30, false)*/
-        for (i in 0 until arr.length() ) {
+    /**
+     * add markers to the map
+     *
+     * @param arr JSONArray containing museum information
+     */
+    fun addMarkers(arr: JSONArray): Unit {
+        for (i in 0 until arr.length()) {
             var name = arr.getJSONObject(i).get("name").toString()
             var lng = arr.getJSONObject(i).get("lng").toString().toDouble()
-            var lat =  arr.getJSONObject(i).get("lat").toString().toDouble()
+            var lat = arr.getJSONObject(i).get("lat").toString().toDouble()
             var location = LatLng(lat, lng)
 
+            //resize icon before adding as marker
             val imageBitmap = BitmapFactory.decodeResource(context?.getResources(),
                     R.drawable.ic_pin_map);
             var v = Bitmap.createScaledBitmap(imageBitmap, 63, 80, false)
             var marker = mMap?.addMarker((MarkerOptions()
                     .position(location)
                     .icon(BitmapDescriptorFactory.fromBitmap(v))))
-           // BitmapDescriptorFactory.fromBitmap(resizeBitmap("your drawable name",72,64)
 
             marker?.tag = i
         }
     }
 
-    fun getAllMuseums() : Unit {
-        val result = URL("http://deframe-test-api.us-east-1.elasticbeanstalk.com:80/museums").readText()
+    /**
+     * Call to database to get all museums' JSONArray
+     */
+    fun getAllMuseums(): Unit {
+        val result = URL(Constants.API_TEST + "/museums").readText()
         val list = JSONArray(result)
         museumList = list
     }
 
-
-
+    /**
+     * handles set up and actions of the map
+     *
+     * @param map
+     */
     override fun onMapReady(map: GoogleMap?) {
 
-       var infoCard = infoCard
+        //set info card as invisble at first
+        var infoCard = infoCard
         infoCard.visibility = View.INVISIBLE
 
-         mMap = map
+        mMap = map
 
         //Camera zoom to Boston
         val myPlace = LatLng(42.36, -71.05)  //Boston
@@ -129,43 +147,38 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
         mMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(myPlace, 12.0f))
         mMap?.getUiSettings()?.setZoomControlsEnabled(true)
 
+        //add museum markers to the map
         addMarkers(museumList!!)
 
         Toast.makeText(this.context, "OnMapReady end", Toast.LENGTH_LONG).show()
 
-        //if marker gets clicked
+        //if marker gets clicked, info card shows up with selected museum's information
         mMap?.setOnMarkerClickListener(object : GoogleMap.OnMarkerClickListener {
             override fun onMarkerClick(marker: Marker): Boolean {
 
-               // var tag =  marker.tag.toInt()
-
                 infoCard.visibility = View.VISIBLE
-                preview_museum.text = museumList!!.getJSONObject( marker.tag as Int).get("name").toString()
-                preview_address.text = museumList!!.getJSONObject( marker.tag as Int).get("street").toString()
-                preview_city.text = museumList!!.getJSONObject( marker.tag as Int).get("city").toString() + " "+
-                        museumList!!.getJSONObject( marker.tag as Int).get("state").toString() + ", "+
-                        museumList!!.getJSONObject( marker.tag as Int).get("zip").toString()
-                selectedMuseum =  museumList!!.getJSONObject( marker.tag as Int)
-               Picasso.get()
-                        .load(museumList!!.getJSONObject( marker.tag as Int).get("bannerUrl").toString())
+                preview_museum.text = museumList!!.getJSONObject(marker.tag as Int).get("name").toString()
+                preview_address.text = museumList!!.getJSONObject(marker.tag as Int).get("street").toString()
+                preview_city.text = museumList!!.getJSONObject(marker.tag as Int).get("city").toString() + " " +
+                        museumList!!.getJSONObject(marker.tag as Int).get("state").toString() + ", " +
+                        museumList!!.getJSONObject(marker.tag as Int).get("zip").toString()
+                selectedMuseum = museumList!!.getJSONObject(marker.tag as Int)
+                Picasso.get()
+                        .load(museumList!!.getJSONObject(marker.tag as Int).get("bannerUrl").toString())
                         .fit()
                         .centerCrop()
                         .into(preview_img);
                 return false
-            }})
+            }
+        })
 
-        //info preview card on click listener
+        //info preview card on click listener, starts museum detail activity
         infoCard.setOnClickListener {
-            val museumDetailIntent = Intent(this.context,MuseumDetailActivity::class.java)
+            val museumDetailIntent = Intent(this.context, MuseumDetailActivity::class.java)
             museumDetailIntent.putExtra("info", selectedMuseum.toString())
             startActivity(museumDetailIntent)
         }
-
-
     }
-
-
-
 }
 
 
