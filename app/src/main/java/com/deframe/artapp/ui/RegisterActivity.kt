@@ -8,6 +8,9 @@ import android.widget.Button
 import android.widget.TextView
 import com.deframe.artapp.R
 
+/**
+ * This class handles the registration screen
+ */
 class RegisterActivity : AppCompatActivity() {
     /**
      *
@@ -23,13 +26,12 @@ class RegisterActivity : AppCompatActivity() {
         registerButton.setOnClickListener {
             val mainPageIntent = Intent(this, MainActivity::class.java)
             startActivity(mainPageIntent)
-
         }
 
         //on click listener for switching to log in
         val textLogIn = findViewById<TextView>(R.id.txt_loginSwitch)
         textLogIn.setOnClickListener {
-            val logInPageIntent = Intent(this,LoginActivity::class.java)
+            val logInPageIntent = Intent(this, LoginActivity::class.java)
             startActivity(logInPageIntent)
         }
     }
