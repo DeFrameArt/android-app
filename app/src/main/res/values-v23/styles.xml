@@ -2,9 +2,11 @@
 
     <style name="AppTheme" parent="AppTheme.Base">
         <item name="windowNoTitle">true</item>
-        <item name="android:textColorPrimary">@color/colorAccent</item>
-        <item name="android:statusBarColor">@android:color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:statusBarColor">@color/deframe_pink</item>
+
         <item name="android:windowLightStatusBar">true</item>
     </style>
+
 
 </resources>

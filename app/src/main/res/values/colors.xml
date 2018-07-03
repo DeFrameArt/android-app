@@ -13,4 +13,7 @@
     <color name="blue">#790084</color>
     <color name="cyan">#0097A7</color>
     <color name="indigo">#3F51B5</color>
+    <color name="deframe_pink">#D1427A</color>
+    <color name="deframe_dark_purple">#99427A</color>
+    <color name="deframe_dark_red">#9B3E61</color>
 </resources>

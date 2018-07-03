@@ -2,21 +2,23 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/white</item>
-        <item name="colorPrimaryDark">@color/white</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/deframe_pink</item>
+        <item name="colorPrimaryDark">@color/deframe_dark_red</item>
+        <item name="colorAccent">@color/deframe_pink</item>
     </style>
 
     <style name="AppTheme" parent="AppTheme.Base">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:textColorPrimary">@color/colorAccent</item>
+
+        <item name="android:statusBarColor">@color/deframe_pink</item>
     </style>
 
     <style name="ToolbarTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/white</item>
-        <item name="colorPrimaryDark">@color/white</item>
-        <item name="android:textColorPrimary">@color/black</item>
+        <item name="colorPrimary">@color/deframe_pink</item>
+        <item name="colorPrimaryDark">@color/deframe_dark_red</item>
+        <item name="android:textColorPrimary">@color/white</item>
     </style>
+
 
 </resources>
