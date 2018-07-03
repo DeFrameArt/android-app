@@ -71,9 +71,12 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
         }
 
         //runs a thread to call the database
-        Thread(Runnable {
+        var t = Thread(Runnable {
             getAllMuseums()
-        }).start()
+        })
+        t.start()
+        t.join()
+
         return rootView
     }
 
