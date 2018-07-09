@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    tools:context="com.deframe.artapp.ui.FeedbackActivity">
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/feedback"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send Feedback"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/feedbacktext"
+        android:layout_width="match_parent"
+        android:layout_height="460dp"
+        android:layout_below="@+id/feedback"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/border_feedback"
+        android:ems="10"
+        android:hint="Please enter your feedback here"
+        android:inputType="textPersonName"
+        android:textAlignment="viewStart"
+        android:textColor="@color/black" />
+
+
+    <Button
+        android:id="@+id/submitbutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/feedbacktext"
+        android:background="@color/deframe_pink"/>
+</RelativeLayout>

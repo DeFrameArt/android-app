@@ -3,10 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
     android:layout_marginEnd="15dp"
     android:layout_marginStart="15dp"
+    android:layout_marginTop="10dp"
+    android:background="@color/light"
     android:orientation="vertical"
-    app:cardElevation="5dp">
+    app:cardElevation="3dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -40,7 +43,7 @@
             android:layout_below="@+id/list_item_museumName"
             android:layout_centerHorizontal="true"
 
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginTop="5dp"
             android:text=" 25 Harbor Shore Drive, Boston, MA 02210"
             android:textSize="16dp" />
