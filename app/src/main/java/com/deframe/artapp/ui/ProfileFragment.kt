@@ -40,25 +40,30 @@ class ProfileFragment : Fragment() {
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //assign onclick listeners
+        //assign onclick listener for terms and conditions button
         terms_and_conditions.setOnClickListener {
             var termsIntent = Intent(this.context, TermsAndConditionsActivity::class.java)
             startActivity(termsIntent)
         }
 
+        //assign onclick listener for privacy button
         privacy.setOnClickListener {
             val privacyIntent = Intent(this.context, PrivacyActivity::class.java)
             startActivity(privacyIntent)
         }
 
+        //assign onclick listener for feedback button
         feedback.setOnClickListener{
             val feedbackIntent = Intent(this.context, FeedbackActivity::class.java)
             startActivity(feedbackIntent)
 
         }
 
+        //assign onclick listener for logout button
         logout.setOnClickListener{
-
+            val loginIntent = Intent(this.context, LoginActivity::class.java)
+            startActivity(loginIntent)
+            getActivity()!!.finish()
         }
     }
 }

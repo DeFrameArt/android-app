@@ -90,6 +90,12 @@ class ListViewFragment : android.support.v4.app.Fragment() {
     }
 
 
+    /**
+     * Creates list of museum objects from JSONArray
+     *
+     * @param arr JSONArray from database
+     * @return ArrayList of Museum objects
+     */
     fun getAllMuseumsList(arr :JSONArray):ArrayList<Museum>{
         val list = ArrayList<Museum>()
 

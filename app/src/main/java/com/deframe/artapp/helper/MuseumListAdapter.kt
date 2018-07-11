@@ -24,9 +24,6 @@ import android.widget.AdapterView
 import com.deframe.artapp.ui.MainActivity
 import android.os.Bundle
 
-
-
-
 /**
  * This class is the custom adapter of the museum list screen
  */
@@ -62,7 +59,6 @@ class MuseumListAdapter(val museumList: ArrayList<Museum>) : RecyclerView.Adapte
     }
 
 
-
     /**
      * This inner class is the custom view holder of the museum list screen
      *
@@ -89,8 +85,8 @@ class MuseumListAdapter(val museumList: ArrayList<Museum>) : RecyclerView.Adapte
             itemView.setOnClickListener({
                 val museumDetailIntent = Intent(itemView.context, MuseumDetailActivity::class.java)
                 val bundle = Bundle()
-                museumDetailIntent.putExtra("info",data.getJson().toString())
-                startActivity(itemView.context,museumDetailIntent,bundle)
+                museumDetailIntent.putExtra("info", data.getJson().toString())
+                startActivity(itemView.context, museumDetailIntent, bundle)
             })
         }
     }
