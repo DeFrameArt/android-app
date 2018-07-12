@@ -3,8 +3,9 @@
     <!-- Base application theme. -->
     <style name="AppTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/deframe_pink</item>
-        <item name="colorPrimaryDark">@color/deframe_dark_red</item>
+        <item name="colorPrimaryDark">@color/deframe_pink</item>
         <item name="colorAccent">@color/deframe_pink</item>
+        <item name="actionMenuTextAppearance"></item>
     </style>
 
     <style name="AppTheme" parent="AppTheme.Base">

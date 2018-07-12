@@ -99,7 +99,7 @@ class ListViewFragment : android.support.v4.app.Fragment() {
     fun getAllMuseumsList(arr :JSONArray):ArrayList<Museum>{
         val list = ArrayList<Museum>()
 
-        for (i in 0 until arr.length()) {
+        for (i in 0 until arr!!.length()) {
             var museumId = arr.getJSONObject(i).get("id").toString().toInt()
             var name = arr.getJSONObject(i).get("name").toString()
             var address =  museumList!!.getJSONObject(i).get("street").toString() + ", "+

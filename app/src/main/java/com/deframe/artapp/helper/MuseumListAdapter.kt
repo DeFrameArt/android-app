@@ -68,9 +68,9 @@ class MuseumListAdapter(val museumList: ArrayList<Museum>) : RecyclerView.Adapte
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bindItems(data: Museum) {
-            val txtName = itemView.findViewById<TextView>(R.id.list_item_museumName)
-            val txtAddress = itemView.findViewById<TextView>(R.id.list_item_museumAddress)
-            val img = itemView.findViewById<ImageView>(R.id.list_item_museumImage)
+            val txtName = itemView!!.findViewById<TextView>(R.id.list_item_museumName)
+            val txtAddress = itemView!!.findViewById<TextView>(R.id.list_item_museumAddress)
+            val img = itemView!!.findViewById<ImageView>(R.id.list_item_museumImage)
             txtName.text = data.getName()
             txtAddress.text = data.getAddress()
 
@@ -82,12 +82,12 @@ class MuseumListAdapter(val museumList: ArrayList<Museum>) : RecyclerView.Adapte
 
 
             //set the onclick listener for the singlt list item
-            itemView.setOnClickListener({
-                val museumDetailIntent = Intent(itemView.context, MuseumDetailActivity::class.java)
+            itemView.setOnClickListener{
+                val museumDetailIntent = Intent(itemView!!.context, MuseumDetailActivity::class.java)
                 val bundle = Bundle()
                 museumDetailIntent.putExtra("info", data.getJson().toString())
-                startActivity(itemView.context, museumDetailIntent, bundle)
-            })
+                startActivity(itemView!!.context, museumDetailIntent, bundle)
+            }
         }
     }
 }

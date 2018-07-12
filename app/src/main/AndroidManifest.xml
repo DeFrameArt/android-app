@@ -18,12 +18,12 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ui.MainActivity" />
         <activity android:name=".ui.RegisterActivity" />
-        <activity android:name=".ui.LoginActivity"
-            android:theme="@style/AppTheme.Launcher"
-        >
+        <activity
+            android:name=".ui.LoginActivity"
+            android:theme="@style/AppTheme.Launcher">
             <intent-filter>
-
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -32,7 +32,8 @@
         <activity android:name=".ui.CollectionActivity" />
         <activity
             android:name=".ui.TermsAndConditionsActivity"
-            android:label="@string/title_activity_terms_and_conditions" />
+            android:label="Terms of Use"
+            android:theme="@style/AppTheme.Base" />
         <activity android:name=".ui.RegisterEmail" />
         <activity android:name=".ui.RegisterGuestActivity" />
 
@@ -53,8 +54,11 @@
             android:label="@string/title_activity_maps" />
         <activity
             android:name=".ui.PrivacyActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.FeedbackActivity"></activity>
+            android:theme="@style/AppTheme.Base"
+            android:label="Privacy Policy"/>
+        <activity android:name=".ui.FeedbackActivity"
+            android:theme="@style/AppTheme.Base"
+            android:label="Feedback"/>
     </application>
 
 </manifest>
