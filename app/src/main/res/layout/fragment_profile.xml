@@ -30,6 +30,7 @@
                 app:srcCompat="@drawable/gradient_background" />
 
             <android.support.v7.widget.CardView
+                android:id="@+id/profileimgcard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -56,16 +57,14 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="236dp"
-                android:text="Name" />
+                android:layout_marginTop="250dp"
+                android:text="Name"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
         </RelativeLayout>
 
 
     </android.support.v7.widget.CardView>
-
-
-
-
 
 
     <Button
@@ -75,13 +74,14 @@
         android:layout_below="@+id/profilecard"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="45dp"
+        android:background="@color/light"
         android:drawableLeft="@drawable/termsandcondition"
 
-        android:text="  Terms and conditions"
+        android:paddingLeft="5dp"
+        android:text="  Terms and Conditions"
         android:textAlignment="textStart"
         android:textAllCaps="false"
         android:textColor="@color/black"
-        android:background="@color/light"
         android:textSize="16dp" />
 
     <Button
@@ -90,6 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/terms_and_conditions"
         android:layout_centerHorizontal="true"
+        android:paddingLeft="5dp"
         android:drawableLeft="@drawable/privacy"
 
         android:text="  Privacy"
@@ -105,6 +106,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/privacy"
         android:layout_centerHorizontal="true"
+        android:paddingLeft="5dp"
         android:drawableLeft="@drawable/feedback"
         android:text="  Feedback"
         android:textAlignment="viewStart"
@@ -119,6 +121,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/feedback"
         android:layout_centerHorizontal="true"
+        android:paddingLeft="5dp"
         android:text="Logout"
         android:textAlignment="viewStart"
         android:background="@color/light"
