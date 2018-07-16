@@ -21,7 +21,6 @@ import com.google.android.gms.maps.model.MarkerOptions
  * This class handles the map setup
  * */
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
-
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1
     }
