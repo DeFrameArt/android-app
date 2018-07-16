@@ -51,4 +51,3 @@ class RegisterEmail : AppCompatActivity() {
         return matcher.matches()
     }
 }
-
