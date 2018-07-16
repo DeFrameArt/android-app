@@ -100,13 +100,13 @@ class ListViewFragment : android.support.v4.app.Fragment() {
         val list = ArrayList<Museum>()
 
         for (i in 0 until arr!!.length()) {
-            var museumId = arr.getJSONObject(i).get("id").toString().toInt()
-            var name = arr.getJSONObject(i).get("name").toString()
+            var museumId = arr!!.getJSONObject(i).get("id").toString().toInt()
+            var name = arr!!.getJSONObject(i).get("name").toString()
             var address =  museumList!!.getJSONObject(i).get("street").toString() + ", "+
                     museumList!!.getJSONObject(i).get("city").toString() + " " +
                     museumList!!.getJSONObject(i).get("zip").toString()
-            var url = arr.getJSONObject(i).get("bannerUrl").toString()
-            var museumJSONObject = arr.getJSONObject(i)
+            var url = arr!!.getJSONObject(i).get("bannerUrl").toString()
+            var museumJSONObject = arr!!.getJSONObject(i)
             list.add(Museum(museumId, name,address,url,museumJSONObject))
         }
         return list
