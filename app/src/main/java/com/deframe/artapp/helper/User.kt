@@ -1,5 +1,6 @@
 package com.deframe.artapp.helper
 
+import android.graphics.drawable.Drawable
 import org.json.JSONObject
 
 /**
@@ -9,44 +10,19 @@ import org.json.JSONObject
  * @property address address of the museum
  * @constructor constructor
  */
-class User {
+object User {
 
 
     private var firstname: String = ""
+    private var lastname: String = ""
     private var email: String = ""
-    private var profilepic : String = ""
+    private var profilepic: Drawable? = null
 
     /**
      * @param firstname
+     * @param lastname
      * @param email
      * @param profilepic
      * @return Museum object
      */
-    constructor(museumId: Int, name: String, address: String, url:String, json: JSONObject) {
-
-    }
-
-    /**
-     *
-     * @return String name of the museum
-     */
-    fun getName(): String {
-        return this.firstname
-    }
-
-    /**
-     *
-     * @return String address of the museum
-     */
-    fun getEmail(): String {
-        return this.email
-    }
-
-    /**
-     *
-     * @return museum's image banner url
-     */
-    fun getProfilePic(): String {
-        return this.profilepic
-    }
 }

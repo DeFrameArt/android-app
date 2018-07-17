@@ -9,6 +9,7 @@ import com.deframe.artapp.R
 import kotlinx.android.synthetic.main.activity_register.*
 import java.util.regex.Pattern
 
+
 /**
  * This class handles the register email screen
  */
@@ -29,10 +30,11 @@ class RegisterEmail : AppCompatActivity() {
         loginButton.setOnClickListener {
 
             //checks if an email is entered
-            if (email.text.toString().isNotBlank() && isEmailValid()) {
+            if (pawssword2.text.toString().isNotBlank() && isEmailValid()) {
                 val registerIntent = Intent(this, RegisterActivity::class.java)
+                registerIntent.putExtra("email", pawssword2.text.toString())
                 startActivity(registerIntent)
-            } else{
+            } else {
                 Toast.makeText(this, "Please enter a valid email address", Toast.LENGTH_SHORT).show()
             }
         }
@@ -44,7 +46,7 @@ class RegisterEmail : AppCompatActivity() {
      * @return boolean true for valid false for invalid
      */
     fun isEmailValid(): Boolean {
-        var email = email.text.toString()
+        var email = pawssword2.text.toString()
         val expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$"
         val pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE)
         val matcher = pattern.matcher(email)
