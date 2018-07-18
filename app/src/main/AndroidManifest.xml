@@ -37,6 +37,7 @@
             android:theme="@style/AppTheme.Base" />
         <activity android:name=".ui.RegisterEmail" />
         <activity android:name=".ui.RegisterGuestActivity" />
+        <activity android:name=".ui.FloorplanActivity" />
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

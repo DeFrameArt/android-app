@@ -21,6 +21,9 @@ import org.json.JSONArray
 import org.json.JSONObject
 import org.xml.sax.Parser
 import java.net.URL
+import com.android.volley.AuthFailureError
+import com.android.volley.VolleyError
+
 
 /**
  * This class handles the login screen
@@ -38,12 +41,12 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         //on click listener for login button
-        //TODO: temporarily disabled intent of register button to test database calls. Need to uncomment later
+        //TODO: login credentials check has bug
         btn_login.setOnClickListener {
-            checkLoginCredentials()
-            /*
+           // checkLoginCredentialsString()
+
             val mainPageIntent = Intent(this, MainActivity::class.java)
-            startActivity(mainPageIntent)*/
+            startActivity(mainPageIntent)
         }
 
         //on click listener for switching to register email screen
@@ -60,6 +63,34 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     *
+     *This method handles the login credential verification of an user
+     */
+    fun checkLoginCredentialsString() {
+        val queue = Volley.newRequestQueue(this)
+        val url = URL(Constants.API_TEST + "/accounts/login").toString()
+        val loginJSON = JSONObject()
+
+        loginJSON.put("emailAddress", txt_email)
+        loginJSON.put("password", txt_password)
+        loginJSON.put("role", "Visitor")
+
+        val stringRequest = object : StringRequest(Request.Method.POST, url,
+                Response.Listener { }, Response.ErrorListener { }) {
+            @Throws(AuthFailureError::class)
+            override fun getHeaders(): Map<String, String> {
+                println(headers)
+                return if (headers == null) super.getHeaders() else headers
+            }
+
+            @Throws(AuthFailureError::class)
+            override fun getBody(): ByteArray {
+                return loginJSON.toString().toByteArray()
+            }
+        }
+        queue.add(stringRequest)
+    }
 
     /**
      * This method handles the login credential verification of an user
@@ -67,8 +98,8 @@ class LoginActivity : AppCompatActivity() {
     fun checkLoginCredentials() {
         val queue = Volley.newRequestQueue(this)
         val url = URL(Constants.API_TEST + "/accounts/login").toString()
-
         val loginJSON = JSONObject()
+
         loginJSON.put("emailAddress", txt_email)
         loginJSON.put("password", txt_password)
         loginJSON.put("role", "Visitor")

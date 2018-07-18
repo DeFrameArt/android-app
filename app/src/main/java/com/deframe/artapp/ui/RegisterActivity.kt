@@ -26,14 +26,13 @@ import com.android.volley.toolbox.Volley
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
-
+import com.deframe.artapp.helper.User
+import kotlinx.android.synthetic.main.activity_register.view.*
 
 /**
  * This class handles the registration screen
  */
 class RegisterActivity : AppCompatActivity() {
-
-
     private var email = ""
 
     var passwordSecure: Boolean = false
@@ -58,6 +57,7 @@ class RegisterActivity : AppCompatActivity() {
             //starts main page only if pw requirements are met. Shows hint otherwise
             if (passwordSecure && password1.text.toString() == pawssword2.text.toString() && isNameEntered()) {
                 recordNewUser()
+                setCurrentUser(txt_firstname.text.toString(), txt_lastname.text.toString(), email)
                 val mainPageIntent = Intent(this, MainActivity::class.java)
                 startActivity(mainPageIntent)
             } else if (!(password1.text.toString() == pawssword2.text.toString())) {
@@ -68,6 +68,12 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please enter name", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    fun setCurrentUser(first: String, last: String, email: String) {
+        User.firstname = first
+        User.lastname = last
+        User.email = email
     }
 
     /**
@@ -167,5 +173,4 @@ class RegisterActivity : AppCompatActivity() {
         )
         queue.add(jsonObjectRequest)
     }
-
 }

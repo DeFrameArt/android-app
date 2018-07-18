@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Toast
 import com.deframe.artapp.R
 import com.deframe.artapp.R.color.white
+import com.deframe.artapp.helper.User
 import com.mikhaellopez.circularimageview.CircularImageView
 import kotlinx.android.synthetic.main.activity_guest_register.*
 
@@ -30,6 +31,14 @@ class RegisterGuestActivity : AppCompatActivity() {
             if(guest_name.text.toString().isEmpty()){
                 Toast.makeText(this,"Please enter your name", Toast.LENGTH_SHORT).show()
             } else {
+                //if no image selected, goes for the first one
+                if(currentUserPic == null) {
+                    currentUserPic = userpic1
+                }
+                //sets the user singleton object's info
+                User.profilepic = currentUserPic!!.drawable
+                User.firstname = guest_name.text.toString()
+
                 val mainPageIntent = Intent(this, MainActivity::class.java)
                 startActivity(mainPageIntent)
             }
