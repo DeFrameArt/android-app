@@ -2,16 +2,13 @@ package com.deframe.artapp.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
-import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.deframe.artapp.R
-import org.json.JSONArray
-import org.json.JSONObject
-import org.xml.sax.Parser
-import java.net.URL
+import kotlinx.android.synthetic.main.activity_register.*
+import java.util.regex.Pattern
+
 
 /**
  * This class handles the register email screen
@@ -31,9 +28,28 @@ class RegisterEmail : AppCompatActivity() {
         //on click listener for next button
         val loginButton = findViewById<TextView>(R.id.btn_next)
         loginButton.setOnClickListener {
-            val registerIntent = Intent(this, RegisterActivity::class.java)
-            startActivity(registerIntent)
+
+            //checks if an email is entered
+            if (pawssword2.text.toString().isNotBlank() && isEmailValid()) {
+                val registerIntent = Intent(this, RegisterActivity::class.java)
+                registerIntent.putExtra("email", pawssword2.text.toString())
+                startActivity(registerIntent)
+            } else {
+                Toast.makeText(this, "Please enter a valid email address", Toast.LENGTH_SHORT).show()
+            }
         }
     }
-}
 
+    /**
+     * Checks if email if valid
+     *
+     * @return boolean true for valid false for invalid
+     */
+    fun isEmailValid(): Boolean {
+        var email = pawssword2.text.toString()
+        val expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$"
+        val pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE)
+        val matcher = pattern.matcher(email)
+        return matcher.matches()
+    }
+}

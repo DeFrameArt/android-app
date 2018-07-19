@@ -34,6 +34,12 @@ class MuseumDetailActivity : AppCompatActivity() {
         var string = intent.getStringExtra("info")
         var museum = JSONObject(string)
 
+        button_map.setOnClickListener {
+            val floorplanIntent = Intent(this, FloorplanActivity::class.java)
+            floorplanIntent.putExtra("id", 1)
+            startActivity(floorplanIntent)
+        }
+
         //set museum information text
         museum_name.text = museum.get("name").toString()
         address_street.text = museum.get("street").toString()

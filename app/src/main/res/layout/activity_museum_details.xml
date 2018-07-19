@@ -96,7 +96,10 @@
         android:paddingTop="20dp"
         android:text="Map"
         android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat" />
+        android:drawableTint="@color/deframe_pink"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@color/gray"
+        android:textSize="12dp" />
 
     <Button
         android:id="@+id/button_frida"
@@ -110,11 +113,13 @@
 
         android:layout_weight="1"
         android:background="@color/white"
-        android:drawableTop="@drawable/baseline_list_black_24dp"
+        android:drawableTop="@drawable/resizedfrida"
         android:paddingTop="20dp"
         android:text="Ask Frida"
         android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat" />
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@color/gray"
+        android:textSize="12dp" />
 
     <View
         android:layout_width="match_parent"

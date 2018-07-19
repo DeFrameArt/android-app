@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/txt"
@@ -22,19 +22,18 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/txt"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/border_pink"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="16dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/border_pink"/>
+        android:textSize="16dp" />
 
     <TextView
         android:id="@+id/txt_choose_pic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_below="@+id/guest_name"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
@@ -42,130 +41,135 @@
         android:textColor="@color/black"
         android:textSize="16dp" />
 
-
-    <GridLayout
-
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt_choose_pic"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:columnCount="3"
-        android:rowCount="3">
-
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/userpic1"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:src="@drawable/userpic3"
-            app:civ_border_color="@color/deframe_pink"
-            app:civ_border_width="2dp"
-            app:civ_shadow="false"
-            app:civ_shadow_gravity="bottom"
-            app:civ_shadow_radius="10" />
-
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/userpic2"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:src="@drawable/userpic4"
-            app:civ_border_color="@color/deframe_pink"
-            app:civ_border_width="2dp"
-            app:civ_shadow="false"
-            app:civ_shadow_gravity="bottom"
-            app:civ_shadow_radius="10" />
-
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/userpic3"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:src="@drawable/userpic8"
-            app:civ_border_color="@color/deframe_pink"
-            app:civ_border_width="2dp"
-            app:civ_shadow="false"
-            app:civ_shadow_gravity="bottom"
-            app:civ_shadow_radius="10" />
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp">
 
 
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/userpic4"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:src="@drawable/userpic9"
-            app:civ_border_color="@color/deframe_pink"
-            app:civ_border_width="2dp"
-            app:civ_shadow="true"
-            app:civ_shadow_gravity="bottom"
-            app:civ_shadow_radius="10" />
+        <GridLayout
 
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/userpic5"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:src="@drawable/userpic11"
-            app:civ_border_color="@color/deframe_pink"
-            app:civ_border_width="2dp"
-            app:civ_shadow="false"
-            app:civ_shadow_gravity="bottom"
-            app:civ_shadow_radius="10" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/userpic6"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:src="@drawable/userpic5"
-            app:civ_border_color="@color/deframe_pink"
-            app:civ_border_width="2dp"
-            app:civ_shadow="false"
-            app:civ_shadow_gravity="bottom"
-            app:civ_shadow_radius="10" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:columnCount="3"
+            android:rowCount="3">
 
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/userpic1"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:src="@drawable/userpic3"
+                app:civ_border_color="@color/deframe_pink"
+                app:civ_border_width="2dp"
+                app:civ_shadow="false"
+                app:civ_shadow_gravity="bottom"
+                app:civ_shadow_radius="10" />
 
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/userpic7"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:src="@drawable/userpic7"
-            app:civ_border_color="@color/deframe_pink"
-            app:civ_border_width="2dp"
-            app:civ_shadow="false"
-            app:civ_shadow_gravity="bottom"
-            app:civ_shadow_radius="10" />
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/userpic2"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:src="@drawable/userpic4"
+                app:civ_border_color="@color/deframe_pink"
+                app:civ_border_width="2dp"
+                app:civ_shadow="false"
+                app:civ_shadow_gravity="bottom"
+                app:civ_shadow_radius="10" />
 
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/userpic8"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:src="@drawable/userpic2"
-            app:civ_border_color="@color/deframe_pink"
-            app:civ_border_width="2dp"
-            app:civ_shadow="false"
-            app:civ_shadow_gravity="bottom"
-            app:civ_shadow_radius="10" />
-
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/userpic9"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:src="@drawable/userpic1"
-            app:civ_border_color="@color/deframe_pink"
-            app:civ_border_width="2dp"
-            app:civ_shadow="false"
-            app:civ_shadow_gravity="bottom"
-            app:civ_shadow_radius="10" />
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/userpic3"
+                android:layout_width="130dp"
+                android:layout_height="126dp"
+                android:src="@drawable/userpic8"
+                app:civ_border_color="@color/deframe_pink"
+                app:civ_border_width="2dp"
+                app:civ_shadow="false"
+                app:civ_shadow_gravity="bottom"
+                app:civ_shadow_radius="10" />
 
 
-    </GridLayout>
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/userpic4"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:src="@drawable/userpic9"
+                app:civ_border_color="@color/deframe_pink"
+                app:civ_border_width="2dp"
+                app:civ_shadow="false"
+                app:civ_shadow_gravity="bottom"
+                app:civ_shadow_radius="10" />
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/userpic5"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:src="@drawable/userpic11"
+                app:civ_border_color="@color/deframe_pink"
+                app:civ_border_width="2dp"
+                app:civ_shadow="false"
+                app:civ_shadow_gravity="bottom"
+                app:civ_shadow_radius="10" />
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/userpic6"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:src="@drawable/userpic5"
+                app:civ_border_color="@color/deframe_pink"
+                app:civ_border_width="2dp"
+                app:civ_shadow="false"
+                app:civ_shadow_gravity="bottom"
+                app:civ_shadow_radius="10" />
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/userpic7"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:src="@drawable/userpic7"
+                app:civ_border_color="@color/deframe_pink"
+                app:civ_border_width="2dp"
+                app:civ_shadow="false"
+                app:civ_shadow_gravity="bottom"
+                app:civ_shadow_radius="10" />
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/userpic8"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:src="@drawable/userpic2"
+                app:civ_border_color="@color/deframe_pink"
+                app:civ_border_width="2dp"
+                app:civ_shadow="false"
+                app:civ_shadow_gravity="bottom"
+                app:civ_shadow_radius="10" />
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/userpic9"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:src="@drawable/userpic1"
+                app:civ_border_color="@color/deframe_pink"
+                app:civ_border_width="2dp"
+                app:civ_shadow="false"
+                app:civ_shadow_gravity="bottom"
+                app:civ_shadow_radius="10" />
+        </GridLayout>
+    </RelativeLayout>
 
     <Button
         android:id="@+id/guest_login"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="43dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
         android:background="@color/deframe_pink"
         android:text="LOGIN"
         android:textAllCaps="false"

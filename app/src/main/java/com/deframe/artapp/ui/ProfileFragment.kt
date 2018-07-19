@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.deframe.artapp.R
+import com.deframe.artapp.helper.User
 import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlinx.android.synthetic.main.fragment_profile.view.*
 
 /**
  * This class hosts the profile screen fragment
@@ -40,6 +42,11 @@ class ProfileFragment : Fragment() {
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //sets current user info
+        profile_name.text = User.firstname
+        profile_picture.setImageDrawable(User.profilepic)
+
         //assign onclick listener for terms and conditions button
         terms_and_conditions.setOnClickListener {
             var termsIntent = Intent(this.context, TermsAndConditionsActivity::class.java)
