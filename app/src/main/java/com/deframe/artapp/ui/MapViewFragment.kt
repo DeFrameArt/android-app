@@ -153,7 +153,7 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
         //add museum markers to the map
         addMarkers(museumList!!)
 
-        Toast.makeText(this.context, "OnMapReady end", Toast.LENGTH_LONG).show()
+        //Toast.makeText(this.context, "OnMapReady end", Toast.LENGTH_LONG).show()
 
         //if marker gets clicked, info card shows up with selected museum's information
         mMap?.setOnMarkerClickListener(object : GoogleMap.OnMarkerClickListener {

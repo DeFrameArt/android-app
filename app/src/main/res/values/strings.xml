@@ -6,6 +6,7 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_profile">Profile</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_bot">Bot</string>
     <string name="imageHolder">imageHolder</string>
     <string name="terms_and_conditions">By downloading or using the app, these terms will automatically apply to you – you should make
 sure therefore that you read them carefully before using the app. You’re not allowed to copy, or
@@ -27,7 +28,7 @@ to you exactly what you’re paying for.
 We may update our Privacy Policy from time to time. Thus, you are advised to review this page
 periodically for any changes. We will notify you of any changes by posting the new Privacy Policy on
 this page. These changes are effective immediately after they are posted on this page.\n
-Contact us \n
+        Contact us \n
 If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at
 info@deframeart.com
 </string>

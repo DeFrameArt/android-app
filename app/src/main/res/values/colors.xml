@@ -18,5 +18,6 @@
     <color name="deframe_pink">#D1427A</color>
     <color name="deframe_dark_purple">#99427A</color>
     <color name="deframe_dark_red">#9B3E61</color>
-
+    <color name="colorPrimary">#3f7fe9</color>
+    <color name="botChatBkg">#c04e79</color>
 </resources>

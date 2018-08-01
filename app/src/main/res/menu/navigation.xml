@@ -11,10 +11,10 @@
         android:icon="@drawable/compass"
         android:title="@string/title_map" />
 
-    <!--<item
-        android:id="@+id/notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications" /> -->
+    <item
+        android:id="@+id/Bot"
+        android:icon="@drawable/robot"
+        android:title="@string/title_bot" />
 
     <item
         android:id="@+id/profile"

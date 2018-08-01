@@ -40,6 +40,15 @@ class MuseumDetailActivity : AppCompatActivity() {
             startActivity(floorplanIntent)
         }
 
+        //info preview card on click listener, starts museum detail activity
+        button_frida.setOnClickListener {
+            //Create a Activity
+            Toast.makeText(this, " Under Construction ", Toast.LENGTH_LONG).show()
+            //val botIntent = Intent(this, BotFragment::class.java)
+            //museumDetailIntent.putExtra("info", selectedMuseum.toString())
+            //startActivity(botIntent)
+        }
+
         //set museum information text
         museum_name.text = museum.get("name").toString()
         address_street.text = museum.get("street").toString()
