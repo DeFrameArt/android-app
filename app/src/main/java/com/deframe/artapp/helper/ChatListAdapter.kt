@@ -15,7 +15,6 @@ import com.deframe.artapp.R
 import com.deframe.artapp.R.id.list_item_museumImage
 import com.deframe.artapp.R.id.preview_img
 import com.deframe.artapp.ui.ListViewFragment
-import com.deframe.artapp.ui.MuseumDetailActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_map.*
 import java.util.*
@@ -74,8 +73,6 @@ class ChatListAdapter(val chatMessages : ArrayList<ChatMessage>, val chatMessage
             val rightText = itemView!!.findViewById<TextView>(R.id.rightText)
             leftText.text = data.getLeftText()
             rightText.text = data.getRightText()
-
-
         }
     }
 }

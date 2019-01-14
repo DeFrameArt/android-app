@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="beforeDescendants">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:descendantFocusability="blocksDescendants"
     android:layout_centerInParent="true"
     android:background="@color/white"
     android:orientation="vertical">
@@ -13,7 +20,9 @@
         android:id="@+id/museumbgimage"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:layout_marginTop="55dp"
         android:contentDescription="@string/imageHolder"
+        android:focusable="true"
         app:srcCompat="@android:color/darker_gray" />
 
     <ImageView
@@ -33,9 +42,9 @@
         android:id="@+id/museum_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/museumbgimage"
         android:layout_alignStart="@+id/address_city"
-        android:layout_marginTop="214dp"
+        android:layout_marginTop="14dp"
         android:text="Museum of Fine Arts"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="18dp"
@@ -139,64 +148,16 @@
         android:text="Collections"
         android:textSize="18sp" />
 
-    <ImageView
-        android:id="@+id/collectionImg1"
-        android:layout_width="120dp"
-        android:layout_height="90dp"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_images"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_below="@+id/collections"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/collections"
-        android:layout_marginStart="20dp"
-        app:srcCompat="@android:color/holo_orange_dark" />
-
-    <TextView
-        android:id="@+id/collection1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/collections"
-        android:layout_below="@+id/collectionImg1"
-        android:text="TextView"
-        tools:text="American" />
-
-
-    <ImageView
-        android:id="@+id/collectionImg2"
-        android:layout_width="120dp"
-        android:layout_height="90dp"
-        android:layout_below="@+id/collections"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="3dp"
-
-        android:layout_toRightOf="@+id/collectionImg1"
-        app:srcCompat="@android:color/holo_orange_dark" />
-
-    <TextView
-        android:id="@+id/collection2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/collectionImg1"
-        android:layout_centerHorizontal="true"
-        android:text="TextView"
-        tools:text="American" />
-
-    <ImageView
-        android:id="@+id/collectionImg3"
-        android:layout_width="120dp"
-        android:layout_height="90dp"
-        android:layout_below="@+id/collections"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="3dp"
-
-        android:layout_toRightOf="@+id/collectionImg2"
-        app:srcCompat="@android:color/holo_orange_dark" />
-
-    <TextView
-        android:id="@+id/collection3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/collectionImg3"
-
-        android:layout_toEndOf="@+id/address_city"
-        android:text="TextView"
-        tools:text="American" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="0dp"/>
 
 </RelativeLayout>
+</ScrollView>

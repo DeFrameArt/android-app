@@ -1,177 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/txt"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="36dp"
-        android:text="What is your name?"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="16dp" />
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
-    <EditText
-        android:id="@+id/guest_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/txt"
-        android:layout_marginEnd="25dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/border_pink"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="16dp" />
-
-    <TextView
-        android:id="@+id/txt_choose_pic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/guest_name"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:text="Choose your profile picture"
-        android:textColor="@color/black"
-        android:textSize="16dp" />
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_choose_pic"
-        android:layout_marginEnd="15dp"
-        android:layout_marginStart="15dp">
-
-
-        <GridLayout
-
+        <TextView
+            android:id="@+id/txt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="36dp"
+            android:text="What is your name?"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
 
+        <EditText
+            android:id="@+id/guest_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/txt"
+            android:layout_marginEnd="25dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/border_pink"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/txt_choose_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/guest_name"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:columnCount="3"
-            android:rowCount="3">
-
-            <com.mikhaellopez.circularimageview.CircularImageView
-                android:id="@+id/userpic1"
-                android:layout_width="125dp"
-                android:layout_height="125dp"
-                android:src="@drawable/userpic3"
-                app:civ_border_color="@color/deframe_pink"
-                app:civ_border_width="2dp"
-                app:civ_shadow="false"
-                app:civ_shadow_gravity="bottom"
-                app:civ_shadow_radius="10" />
-
-            <com.mikhaellopez.circularimageview.CircularImageView
-                android:id="@+id/userpic2"
-                android:layout_width="125dp"
-                android:layout_height="125dp"
-                android:src="@drawable/userpic4"
-                app:civ_border_color="@color/deframe_pink"
-                app:civ_border_width="2dp"
-                app:civ_shadow="false"
-                app:civ_shadow_gravity="bottom"
-                app:civ_shadow_radius="10" />
-
-            <com.mikhaellopez.circularimageview.CircularImageView
-                android:id="@+id/userpic3"
-                android:layout_width="130dp"
-                android:layout_height="126dp"
-                android:src="@drawable/userpic8"
-                app:civ_border_color="@color/deframe_pink"
-                app:civ_border_width="2dp"
-                app:civ_shadow="false"
-                app:civ_shadow_gravity="bottom"
-                app:civ_shadow_radius="10" />
+            android:layout_marginTop="5dp"
+            android:text="Choose your profile picture"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
 
 
-            <com.mikhaellopez.circularimageview.CircularImageView
-                android:id="@+id/userpic4"
-                android:layout_width="125dp"
-                android:layout_height="125dp"
-                android:src="@drawable/userpic9"
-                app:civ_border_color="@color/deframe_pink"
-                app:civ_border_width="2dp"
-                app:civ_shadow="false"
-                app:civ_shadow_gravity="bottom"
-                app:civ_shadow_radius="10" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_choose_pic"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp">
 
-            <com.mikhaellopez.circularimageview.CircularImageView
-                android:id="@+id/userpic5"
-                android:layout_width="125dp"
-                android:layout_height="125dp"
-                android:src="@drawable/userpic11"
-                app:civ_border_color="@color/deframe_pink"
-                app:civ_border_width="2dp"
-                app:civ_shadow="false"
-                app:civ_shadow_gravity="bottom"
-                app:civ_shadow_radius="10" />
+            <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true">
 
-            <com.mikhaellopez.circularimageview.CircularImageView
-                android:id="@+id/userpic6"
-                android:layout_width="125dp"
-                android:layout_height="125dp"
-                android:src="@drawable/userpic5"
-                app:civ_border_color="@color/deframe_pink"
-                app:civ_border_width="2dp"
-                app:civ_shadow="false"
-                app:civ_shadow_gravity="bottom"
-                app:civ_shadow_radius="10" />
+                <ImageView
+                    android:id="@+id/userpic9"
+                    android:layout_width="105dp"
+                    android:layout_height="105dp"
+                    android:layout_marginEnd="28dp"
+                    android:adjustViewBounds="true"
+                    android:onClick="selectUserPic"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/userprofile"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/userpic8"
+                    app:layout_constraintTop_toBottomOf="@+id/userpic6" />
 
-            <com.mikhaellopez.circularimageview.CircularImageView
-                android:id="@+id/userpic7"
-                android:layout_width="125dp"
-                android:layout_height="125dp"
-                android:src="@drawable/userpic7"
-                app:civ_border_color="@color/deframe_pink"
-                app:civ_border_width="2dp"
-                app:civ_shadow="false"
-                app:civ_shadow_gravity="bottom"
-                app:civ_shadow_radius="10" />
+                <ImageView
+                    android:id="@+id/userpic8"
+                    android:layout_width="105dp"
+                    android:layout_height="105dp"
+                    android:adjustViewBounds="true"
+                    android:onClick="selectUserPic"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/userpic8"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/userpic5" />
 
-            <com.mikhaellopez.circularimageview.CircularImageView
-                android:id="@+id/userpic8"
-                android:layout_width="125dp"
-                android:layout_height="125dp"
-                android:src="@drawable/userpic2"
-                app:civ_border_color="@color/deframe_pink"
-                app:civ_border_width="2dp"
-                app:civ_shadow="false"
-                app:civ_shadow_gravity="bottom"
-                app:civ_shadow_radius="10" />
+                <ImageView
+                    android:id="@+id/userpic7"
+                    android:layout_width="105dp"
+                    android:layout_height="105dp"
+                    android:adjustViewBounds="true"
+                    android:onClick="selectUserPic"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/userpic7"
+                    app:layout_constraintEnd_toStartOf="@+id/userpic8"
+                    app:layout_constraintTop_toBottomOf="@+id/userpic4" />
 
-            <com.mikhaellopez.circularimageview.CircularImageView
-                android:id="@+id/userpic9"
-                android:layout_width="125dp"
-                android:layout_height="125dp"
-                android:src="@drawable/userpic1"
-                app:civ_border_color="@color/deframe_pink"
-                app:civ_border_width="2dp"
-                app:civ_shadow="false"
-                app:civ_shadow_gravity="bottom"
-                app:civ_shadow_radius="10" />
-        </GridLayout>
+                <ImageView
+                    android:id="@+id/userpic4"
+                    android:layout_width="105dp"
+                    android:layout_height="105dp"
+                    android:adjustViewBounds="true"
+                    android:onClick="selectUserPic"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/userpic4"
+                    app:layout_constraintEnd_toStartOf="@+id/userpic5"
+                    app:layout_constraintTop_toBottomOf="@+id/userpic1" />
+
+                <ImageView
+                    android:id="@+id/userpic5"
+                    android:layout_width="105dp"
+                    android:layout_height="105dp"
+                    android:adjustViewBounds="true"
+                    android:onClick="selectUserPic"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/userpic5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/userpic2" />
+
+                <ImageView
+                    android:id="@+id/userpic6"
+                    android:layout_width="105dp"
+                    android:layout_height="105dp"
+                    android:adjustViewBounds="true"
+                    android:onClick="selectUserPic"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/userpic9"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/userpic5"
+                    app:layout_constraintTop_toBottomOf="@+id/userpic3"
+                    tools:ignore="MissingConstraints" />
+
+                <ImageView
+                    android:id="@+id/userpic3"
+                    android:layout_width="105dp"
+                    android:layout_height="105dp"
+                    android:layout_marginTop="20dp"
+                    android:adjustViewBounds="true"
+                    android:onClick="selectUserPic"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/userpic3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/userpic2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/userpic2"
+                    android:layout_width="105dp"
+                    android:layout_height="105dp"
+                    android:layout_marginTop="20dp"
+                    android:adjustViewBounds="true"
+                    android:onClick="selectUserPic"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/userpic2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/userpic1"
+                    android:layout_width="105dp"
+                    android:layout_height="105dp"
+                    android:layout_marginTop="20dp"
+                    android:adjustViewBounds="true"
+                    android:onClick="selectUserPic"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/userpic11"
+                    app:layout_constraintEnd_toStartOf="@+id/userpic2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/guest_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/deframe_pink"
+                    android:onClick="clickloginGuestBtn"
+                    android:text="LOGIN"
+                    android:textAllCaps="false"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/userpic8" />
+
+            </android.support.constraint.ConstraintLayout>
+
+
+        </RelativeLayout>
+
     </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
 
-    <Button
-        android:id="@+id/guest_login"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="43dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
-        android:background="@color/deframe_pink"
-        android:text="LOGIN"
-        android:textAllCaps="false"
-        android:visibility="visible" />
-</RelativeLayout>
+

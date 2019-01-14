@@ -15,6 +15,9 @@ import java.net.URL
 import java.util.*
 
 /**
+ *
+ *
+ * THIS is OBSOLETE
  * This class handles the collection screen
  *
  * @property collectionArr stores the original JSON Array
@@ -39,7 +42,7 @@ class CollectionActivity : AppCompatActivity() {
 
         //runs thread to call database
         var t = Thread(Runnable {
-            var url = Constants.API_TEST + "/museums/" + museumId + "/gallery"
+            var url = API_TEST + "/museums/" + museumId + "/gallery"
             val result = URL(url).readText()
             collectionArr = JSONArray(result)
 

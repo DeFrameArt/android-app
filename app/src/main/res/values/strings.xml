@@ -7,6 +7,7 @@
     <string name="title_profile">Profile</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_bot">Bot</string>
+    <string name="title_shop">Shop</string>
     <string name="imageHolder">imageHolder</string>
     <string name="terms_and_conditions">By downloading or using the app, these terms will automatically apply to you – you should make
 sure therefore that you read them carefully before using the app. You’re not allowed to copy, or
@@ -32,4 +33,5 @@ this page. These changes are effective immediately after they are posted on this
 If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at
 info@deframeart.com
 </string>
+    <string name="site_url">https://www.deframeart.com/gallery</string>
 </resources>

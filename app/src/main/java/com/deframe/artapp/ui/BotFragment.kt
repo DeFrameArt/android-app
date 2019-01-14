@@ -1,6 +1,5 @@
 package com.deframe.artapp.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -10,11 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.deframe.artapp.R
-import com.deframe.artapp.R.id.editText
 import com.deframe.artapp.helper.*
-import org.json.JSONArray
 import org.json.JSONObject
 import java.net.URL
+import android.text.Editable
+import android.text.TextWatcher
 
 
 /**
@@ -43,7 +42,7 @@ class BotFragment : Fragment() {
         var view = inflater.inflate(R.layout.fragment_bot, container, false)
         var chatView: RecyclerView= view.findViewById(R.id.chatView)
         var editText: EditText = view.findViewById(R.id.editText)
-        var addBtn: RelativeLayout =  view.findViewById<RelativeLayout>(R.id.addBtn)
+        var sendBtn: RelativeLayout =  view.findViewById(R.id.sendBtn)
         val chatMessages = ArrayList<ChatMessage>()
         //recyclerView.fix
 
@@ -51,9 +50,15 @@ class BotFragment : Fragment() {
         myLayoutManager.orientation = LinearLayout.VERTICAL
         chatView.layoutManager = myLayoutManager
         var cnt:Int = 0
-        addBtn.setOnClickListener {
+        sendBtn.isEnabled = false
+        var adapter:ChatListAdapter = ChatListAdapter(chatMessages ,ChatMessage("","","",null))
+        sendBtn.setOnClickListener {
             val usermessage = editText.text.toString().trim()
             cnt = cnt + 1
+
+            ////Sabrish - Insert view instead of creating a new adapter
+            //// diff util
+
             //Toast.makeText(this.context, "Hello"+message, Toast.LENGTH_LONG).show()
 
             //val mainPageIntent = Intent(this, MainActivity::class.java)
@@ -61,11 +66,11 @@ class BotFragment : Fragment() {
 
             //////////
 
-            var recyclerView: RecyclerView = view.findViewById(R.id.chatView)
+            //var recyclerView: RecyclerView = view.findViewById(R.id.chatView)
 
             //val myLayoutManager = LinearLayoutManager(context)
             //myLayoutManager.orientation = LinearLayout.VERTICAL
-            recyclerView.layoutManager = myLayoutManager
+            //chatView.layoutManager = myLayoutManager
 
 
             //runs a thread to call the database
@@ -78,7 +83,15 @@ class BotFragment : Fragment() {
             //goes through json array to create Museum array list
             val response = parseResponse(chatMessageJson, usermessage)
             chatMessages.add(response)
-            val adapter = ChatListAdapter(chatMessages ,response)
+            if(chatMessages.size == 1)
+                adapter = ChatListAdapter(chatMessages ,response)
+            else{
+                adapter.notifyItemInserted(adapter.itemCount-1)
+                chatView.scrollToPosition(adapter.itemCount-1)// update based on adapter
+
+            }
+
+
 
             //add the adapter to recyclerview
             //recyclerView.adapter = adapter
@@ -102,16 +115,42 @@ class BotFragment : Fragment() {
 
             //add the adapter to recyclerview
             */
-            recyclerView.adapter = adapter
-
+            chatView.adapter = adapter
             //Things to do after sending text
             editText.text.clear()
             
         }
 
-        /*editText.addTextChangedListener(watcher::TextWatcher ){
 
-        }*/
+
+        editText.addTextChangedListener(object : TextWatcher{
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(s: CharSequence, start: Int,
+                                           count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int,
+                                       before: Int, count: Int) {
+                if(s.isEmpty())
+                    sendBtn.isEnabled = false
+                else
+                    sendBtn.isEnabled = true
+
+                if(chatMessages.size > 1){
+                    //adapter.notifyItemInserted(adapter.itemCount-1)
+                    chatView.scrollToPosition(adapter.itemCount-1)// update based on adapter
+                }
+
+            }
+        })
+
+        editText.setOnClickListener{
+            if(chatMessages.size > 1){
+                //adapter.notifyItemInserted(adapter.itemCount-1)
+                chatView.scrollToPosition(adapter.itemCount-1)// update based on adapter
+            }
+        }
 
         return view
     }
