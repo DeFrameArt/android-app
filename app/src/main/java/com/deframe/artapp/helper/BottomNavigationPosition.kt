@@ -2,9 +2,7 @@ package com.deframe.artapp.helper
 
 import android.support.v4.app.Fragment
 import com.deframe.artapp.R
-import com.deframe.artapp.ui.MapViewFragment
-import com.deframe.artapp.ui.ListViewFragment
-import com.deframe.artapp.ui.ProfileFragment
+import com.deframe.artapp.ui.*
 
 /**
  *Enumerates the bottom navigation buttons
@@ -15,7 +13,9 @@ import com.deframe.artapp.ui.ProfileFragment
 enum class BottomNavigationPosition(val position: Int, val id: Int) {
     LIST(0, R.id.list),
     MAP(1, R.id.dashboard),
-    PROFILE(2, R.id.profile);
+    BOT(2, R.id.Bot),
+    SHOP(3, R.id.shopping),
+    PROFILE(4, R.id.profile);
 }
 
 /**
@@ -27,6 +27,8 @@ enum class BottomNavigationPosition(val position: Int, val id: Int) {
 fun findNavigationPositionById(id: Int): BottomNavigationPosition = when (id) {
     BottomNavigationPosition.LIST.id -> BottomNavigationPosition.LIST
     BottomNavigationPosition.MAP.id -> BottomNavigationPosition.MAP
+    BottomNavigationPosition.BOT.id -> BottomNavigationPosition.BOT
+    BottomNavigationPosition.SHOP.id -> BottomNavigationPosition.SHOP
     BottomNavigationPosition.PROFILE.id -> BottomNavigationPosition.PROFILE
     else -> BottomNavigationPosition.LIST
 }
@@ -39,6 +41,8 @@ fun findNavigationPositionById(id: Int): BottomNavigationPosition = when (id) {
 fun BottomNavigationPosition.createFragment(): Fragment = when (this) {
     BottomNavigationPosition.LIST -> ListViewFragment.newInstance()
     BottomNavigationPosition.MAP -> MapViewFragment.newInstance()
+    BottomNavigationPosition.BOT -> BotFragment.newInstance()
+    BottomNavigationPosition.SHOP -> ShopFragment.newInstance()
     BottomNavigationPosition.PROFILE -> ProfileFragment.newInstance()
 }
 
@@ -50,5 +54,7 @@ fun BottomNavigationPosition.createFragment(): Fragment = when (this) {
 fun BottomNavigationPosition.getTag(): String = when (this) {
     BottomNavigationPosition.LIST -> ListViewFragment.TAG
     BottomNavigationPosition.MAP -> MapViewFragment.TAG
+    BottomNavigationPosition.BOT -> BotFragment.TAG
+    BottomNavigationPosition.SHOP -> ShopFragment.TAG
     BottomNavigationPosition.PROFILE -> ProfileFragment.TAG
 }

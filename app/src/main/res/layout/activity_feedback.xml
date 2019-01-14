@@ -27,6 +27,7 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/border_feedback"
         android:ems="10"
+        android:gravity="top"
         android:hint="Please enter your feedback here"
         android:inputType="textPersonName"
         android:textAlignment="viewStart"

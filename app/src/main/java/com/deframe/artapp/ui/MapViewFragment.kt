@@ -29,6 +29,16 @@ import android.graphics.BitmapFactory
 import com.deframe.artapp.helper.Constants
 import com.deframe.artapp.helper.Constants.Companion.API_TEST
 
+import android.support.v4.content.ContextCompat
+import android.support.v4.app.ActivityCompat
+import android.Manifest
+import android.content.pm.PackageManager
+import android.location.*
+import android.support.v7.app.AppCompatActivity
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+
+
 /**
  * This class handles the map fragment screen
  *
@@ -43,6 +53,11 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
     private var rootView: View? = null
     private var museumList: JSONArray? = null
     private var selectedMuseum: JSONObject? = null
+    private val LOCATION_REQUEST_CODE = 101
+    private lateinit var lastLocation: Location
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private var myPlace : LatLng? = LatLng(42.36, -71.05)
+
 
     companion object {
         val TAG: String = MapViewFragment::class.java.simpleName
@@ -59,6 +74,8 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
      */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this.activity!!)
+        activity?.title = "Map"
         if (rootView != null) {
             var parent: ViewGroup? = null
             parent = rootView?.getParent() as? ViewGroup
@@ -66,6 +83,11 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
         }
         try {
             rootView = inflater.inflate(R.layout.fragment_map, container, false)
+
+            //////
+
+
+            //////
         } catch (e: InflateException) {
             /* map is already there, just return view as it is  */
         }
@@ -130,6 +152,20 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
         museumList = list
     }
 
+    private fun requestPermission(permissionType: String,
+                                  requestCode: Int) {
+        ActivityCompat.requestPermissions(this.activity!!, arrayOf(permissionType), requestCode
+        )
+    }
+
+    private fun placeMarkerOnMap(map: GoogleMap?, location: LatLng) {
+        // 1
+        val markerOptions = MarkerOptions().position(location)
+        // 2
+        map?.addMarker(markerOptions)
+    }
+
+
     /**
      * handles set up and actions of the map
      *
@@ -144,16 +180,50 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
         mMap = map
 
         //Camera zoom to Boston
-        val myPlace = LatLng(42.36, -71.05)  //Boston
+        //val myPlace = LatLng(42.36, -71.05)  //Boston
+        if (mMap != null) {
+            val permission = ContextCompat.checkSelfPermission(this.context!!,
+                    Manifest.permission.ACCESS_FINE_LOCATION)
+
+            if (permission == PackageManager.PERMISSION_GRANTED) {
+                mMap?.isMyLocationEnabled = true
+                // 2
+                fusedLocationClient.lastLocation.addOnSuccessListener { location ->
+                    // Got last known location. In some rare situations this can be null.
+                    // 3
+                    if (location != null) {
+                        lastLocation = location
+                        myPlace = LatLng(location.latitude, location.longitude)
+                        //placeMarkerOnMap(mMap, myPlace!!)
+                        mMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(myPlace, 12f))
+                        //Toast.makeText(this.context, "lat -"+location.latitude + " lng- "+location.longitude, Toast.LENGTH_LONG).show()
+
+                        //mMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 12.0f))
+
+                    }
+                }
+            } else {
+                requestPermission(
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        LOCATION_REQUEST_CODE)
+                myPlace = LatLng(42.36, -71.05)  //Boston
+
+
+            }
+        }
+
         mMap?.moveCamera(CameraUpdateFactory.newLatLng(myPlace))
         mMap?.animateCamera(CameraUpdateFactory.zoomTo(15.0f))
         mMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(myPlace, 12.0f))
         mMap?.getUiSettings()?.setZoomControlsEnabled(true)
 
+        mMap?.uiSettings?.isZoomControlsEnabled = true
+        //mMap?.setOnMarkerClickListener(this.mMap)
+
         //add museum markers to the map
         addMarkers(museumList!!)
 
-        Toast.makeText(this.context, "OnMapReady end", Toast.LENGTH_LONG).show()
+        //Toast.makeText(this.context, "We are currently in Boston.", Toast.LENGTH_LONG).show()
 
         //if marker gets clicked, info card shows up with selected museum's information
         mMap?.setOnMarkerClickListener(object : GoogleMap.OnMarkerClickListener {
@@ -176,12 +246,18 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
         })
 
         //info preview card on click listener, starts museum detail activity
-        infoCard.setOnClickListener {
-            val museumDetailIntent = Intent(this.context, MuseumDetailActivity::class.java)
-            museumDetailIntent.putExtra("info", selectedMuseum.toString())
-            startActivity(museumDetailIntent)
+        infoCard.setOnClickListener{
+            val activity = infoCard.getContext() as AppCompatActivity
+            val myFragment = MuseumDetailFragment()
+            val bundle = Bundle()
+            bundle.putString("info", selectedMuseum.toString())
+            myFragment.arguments = bundle
+            activity.supportFragmentManager.beginTransaction().replace(R.id.container, myFragment).addToBackStack(null).commit()
+
         }
     }
+
+
 }
 
 

@@ -8,21 +8,17 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.ListView
-import android.widget.TextView
 import com.deframe.artapp.R
 import com.deframe.artapp.R.id.list_item_museumImage
 import com.deframe.artapp.R.id.preview_img
-import com.deframe.artapp.ui.ListViewFragment
-import com.deframe.artapp.ui.MuseumDetailActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_map.*
 import java.util.*
 import android.support.v4.content.ContextCompat.startActivity
-import android.widget.AdapterView
-import com.deframe.artapp.ui.MainActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.widget.*
+import com.deframe.artapp.ui.*
 
 /**
  * This class is the custom adapter of the museum list screen
@@ -78,16 +74,33 @@ class MuseumListAdapter(val museumList: ArrayList<Museum>) : RecyclerView.Adapte
                     .load(data.getUrl())
                     .fit()
                     .centerCrop()
-                    .into(img);
+                    .into(img)
 
-
-            //set the onclick listener for the singlt list item
+            //Call the fragment
             itemView.setOnClickListener{
-                val museumDetailIntent = Intent(itemView!!.context, MuseumDetailActivity::class.java)
+                val activity = itemView.getContext() as AppCompatActivity
+                val myFragment = MuseumDetailFragment()
                 val bundle = Bundle()
-                museumDetailIntent.putExtra("info", data.getJson().toString())
-                startActivity(itemView!!.context, museumDetailIntent, bundle)
+                bundle.putString("info", data.getJson().toString())
+                myFragment.arguments = bundle
+                activity.supportFragmentManager.beginTransaction().replace(R.id.container, myFragment).addToBackStack(null).commit()
+
             }
+
         }
+
+        /**
+         * Immediately execute transactions with FragmentManager#executePendingTransactions.
+         */
+        /*
+        private fun switchFragment(navPosition: BottomNavigationPosition): Boolean {
+            val fragment = supportFragmentManager.findFragment(navPosition)
+            if (fragment.isAdded) return false
+            detachFragment()
+            attachFragment(fragment, navPosition.getTag())
+            supportFragmentManager.executePendingTransactions()
+            return true
+        }
+        */
     }
 }

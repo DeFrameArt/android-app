@@ -14,6 +14,7 @@
         class="android.support.v7.app.AlertController$RecycleListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
         android:visibility="visible"
         tools:listitem="Hi">
 

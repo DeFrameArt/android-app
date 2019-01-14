@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -23,6 +24,9 @@ import org.xml.sax.Parser
 import java.net.URL
 import com.android.volley.AuthFailureError
 import com.android.volley.VolleyError
+import android.content.SharedPreferences
+
+
 
 
 /**
@@ -35,10 +39,20 @@ class LoginActivity : AppCompatActivity() {
      *
      * @param savedInstanceState
      */
+    var sp: SharedPreferences? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        sp = getSharedPreferences("login",MODE_PRIVATE)
+
+        if(sp!!.getBoolean("logged",false)){
+            val mainPageIntent = Intent(this, MainActivity::class.java)
+            startActivity(mainPageIntent)
+        }
+
+
 
         //on click listener for login button
         //TODO: login credentials check has bug
@@ -57,12 +71,18 @@ class LoginActivity : AppCompatActivity() {
             startActivity(signUpPageIntent)
         }
 
-        btn_guest_login.setOnClickListener {
-            val guestPageIntent = Intent(this, RegisterGuestActivity::class.java)
-            startActivity(guestPageIntent)
-        }
+        /*btn_guest_login.setOnClickListener {
+
+        }*/
     }
 
+    /**
+     * Method to do guest login
+     */
+    fun loginGuest(view : View){
+        val guestPageIntent = Intent(this, RegisterGuestActivity::class.java)
+        startActivity(guestPageIntent)
+    }
     /**
      *
      *This method handles the login credential verification of an user

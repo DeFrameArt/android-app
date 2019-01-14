@@ -44,7 +44,7 @@ class ListViewFragment : android.support.v4.app.Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreate(savedInstanceState)
         var view = inflater.inflate(R.layout.fragment_list, container, false)
-
+        activity?.title = "Museums"
         return view
     }
 

@@ -16,6 +16,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data android:name="android.webkit.WebView.EnableSafeBrowsing"
+            android:value="false" />
+        <meta-data android:name="android.webkit.WebView.MetricsOptOut"
+            android:value="true" />
         <activity android:name=".ui.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".ui.RegisterActivity" />
@@ -29,8 +33,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.MapsActivity" />
-        <activity android:name=".ui.MuseumDetailActivity" />
-        <activity android:name=".ui.CollectionActivity" />
+        <activity
+            android:name=".ui.CollectionActivity"
+            android:label="Gallery"
+            android:theme="@style/AppTheme.Base" />
         <activity
             android:name=".ui.TermsAndConditionsActivity"
             android:label="Terms of Use"

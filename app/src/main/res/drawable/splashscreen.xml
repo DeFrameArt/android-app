@@ -2,9 +2,10 @@
 <layer-list
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@drawable/gradient_background"/>
-    <item android:top="78dp">
+    <item android:top="178dp">
         <bitmap
            android:gravity="top"
-            android:src="@mipmap/deframe_logo"/>
+            android:src="@mipmap/trasnparent_logo"/>
     </item>
+
 </layer-list>

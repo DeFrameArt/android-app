@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        restoreSaveInstanceState(savedInstanceState)
+        restoreSaveInstanceState(savedInstanceState) //
         setContentView(R.layout.activity_main)
         toolbar = findViewById(R.id.toolbar)
         bottomNavigation = findViewById(R.id.bottom_navigation)
