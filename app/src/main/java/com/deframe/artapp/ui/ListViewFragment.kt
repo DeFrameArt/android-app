@@ -2,6 +2,7 @@ package com.deframe.artapp.ui
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -9,7 +10,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.Toolbar
 import com.deframe.artapp.R
 import com.deframe.artapp.R.id.list_museum
 import com.deframe.artapp.helper.Constants
@@ -21,6 +24,9 @@ import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.fragment_map.*
 import org.json.JSONArray
 import java.net.URL
+import com.deframe.artapp.R.id.toolbar
+
+
 
 /**
  * This class handles the museum list view screen
@@ -78,6 +84,7 @@ class ListViewFragment : android.support.v4.app.Fragment() {
 
         //add the adapter to recyclerview
         recyclerView.adapter = adapter
+
     }
 
     /**
