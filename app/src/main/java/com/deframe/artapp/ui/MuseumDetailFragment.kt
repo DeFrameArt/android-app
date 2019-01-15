@@ -99,6 +99,7 @@ class MuseumDetailFragment : Fragment() {
         recyclerView.setHasFixedSize(false)
         recyclerView.layoutManager = layoutManager
         imageGalleryAdapter = ImageGalleryAdapter(this.requireContext(), Painting.getPaintings(museumId))
+
         return view
     }
 
