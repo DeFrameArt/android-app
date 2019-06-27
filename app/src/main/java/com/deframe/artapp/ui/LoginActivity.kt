@@ -77,13 +77,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     /**
-     * Method to do guest login
-     */
-    fun loginGuest(view : View){
-        val guestPageIntent = Intent(this, RegisterGuestActivity::class.java)
-        startActivity(guestPageIntent)
-    }
-    /**
      *
      *This method handles the login credential verification of an user
      */

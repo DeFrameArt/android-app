@@ -42,7 +42,6 @@
             android:label="Terms of Use"
             android:theme="@style/AppTheme.Base" />
         <activity android:name=".ui.RegisterEmail" />
-        <activity android:name=".ui.RegisterGuestActivity" />
         <activity android:name=".ui.FloorplanActivity" />
 
         <!--
